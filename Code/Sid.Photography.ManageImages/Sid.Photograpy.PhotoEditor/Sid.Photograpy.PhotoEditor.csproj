@@ -40,6 +40,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -61,6 +62,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helper\ApplicationRegistration.cs" />
+    <Compile Include="Helper\RelayCommand.cs" />
     <Compile Include="ViewModel\CleanPhotosViewModel.cs" />
     <Compile Include="ViewModel\GenericViewModel.cs" />
     <Compile Include="Views\UserControls\ucCleanPhotos.xaml.cs">

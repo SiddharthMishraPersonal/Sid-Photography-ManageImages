@@ -37,11 +37,13 @@
               HorizontalAlignment="Right" 
               Margin="5" 
               VerticalAlignment="Center" 
-              Width="75"/>
+              Width="75"
+              Command="{Binding BrowsePhotoLocation}"/>
       <ComboBox Grid.Column="3" 
                 HorizontalAlignment="Left" 
                 Margin="5" 
                 VerticalAlignment="Center" 
+                ItemsSource="{Binding ImageTypes}"
                 Width="120"/>
       <Button Grid.Column="4"
               Name="btnRefresh"

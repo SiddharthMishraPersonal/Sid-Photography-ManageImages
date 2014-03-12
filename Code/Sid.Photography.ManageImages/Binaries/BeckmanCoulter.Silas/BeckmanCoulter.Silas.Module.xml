@@ -1,0 +1,2328 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BeckmanCoulter.Silas.Module</name>
+    </assembly>
+    <members>
+        <member name="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.Converters.ReverseBoolConverter">
+            <summary>
+            A simple converter that reverses (or inverts) the boolean value.
+            </summary>
+            <remarks>
+            This is a copied code from Extensions.dll library.
+            </remarks>
+            <author>Jeffrey Sadeli</author>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.Converters.ReverseBoolConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a boolean value from true to false, and vice versa.
+            </summary>
+            <param name="value">the boolean value produced by the binding target</param>
+            <param name="targetType">(unused) the type of the binding target property</param>
+            <param name="parameter">(unused) the converter parameter to use</param>
+            <param name="culture">(unused) the culture to use in the converter</param>
+            <returns>the opposite boolean of <paramref name="value"/></returns>
+            <exception cref="T:System.InvalidCastException">Thrown if <paramref name="value"/> is not a <see cref="T:System.Boolean"/>.</exception>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.Converters.ReverseBoolConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a boolean value from false to true, and vice versa.
+            </summary>
+            <param name="value">the boolean value produced by the binding target</param>
+            <param name="targetType">(unused) the type to convert to</param>
+            <param name="parameter">(unused) the converter parameter to use</param>
+            <param name="culture">(unused) the culture to use in the converter</param>
+            <returns>
+            The opposite boolean of <paramref name="value"/>
+            -or-
+            <see cref="F:System.Windows.DependencyProperty.UnsetValue"/> if <paramref name="value"/> is not of type <see cref="T:System.Boolean"/>.</returns>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.IConsumerViewModel`2">
+            <summary>
+            This interface is used by developers to create their own
+            custom ViewModel to be used by the more general IRunConfigDialog
+            interface.
+            </summary>
+            <typeparam name="TRunConfig"></typeparam>
+            <typeparam name="TConfig"></typeparam>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.CommandDispatchers.ICommandDispatcher.SetSimulationCondition(System.Func{BeckmanCoulter.Silas.IMessageContext{BeckmanCoulter.Silas.Messages.CommandMessage},System.Boolean})">
+            <summary>
+            Set the Func that will be called to determine if a command should be
+            simulated.
+            </summary>
+            <param name="condition">The delegate that will be called to determine if the given command should be simulated.  Return true from the delegate to simulate, false to run the command normally.</param>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Dialogs.IActionConfigDialog`2.IsDialogVisible">
+            <summary>
+            If the dialog is currently visible, this will be true.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Dialogs.IActionMetaData.Order">
+            <summary>
+            The order in which the action will be placed in the
+            action config window's list of actions.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Dialogs.IActionMetaData.Name">
+            <summary>
+            The name of the action.  If there is no ResourceKey
+            set or no resource linked to the ResourceKey, then
+            this name will be used when displaying the action.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Dialogs.IActionMetaData.ResourceKey">
+            <summary>
+            If assigned, the resource that the ResourceKey points
+            to will be used to display the action.  This resource
+            is typically just a localized string.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Dialogs.IActionMetaData.IsMaintenanceAction">
+            <summary>
+            If true, then this action will only be available when
+            the module is in "maintenance mode".
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Dialogs.IActionMetaData.IsDefaultAction">
+            <summary>
+            If true, this action will be selected by default.
+            </summary>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.AttachedProperties.ListBoxExtenders">
+            <summary>
+            This class contains a few useful extenders for the ListBox
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.AttachedProperties.ListBoxExtenders.GetAutoScrollToCurrentItem(System.Windows.DependencyObject)">
+            <summary>
+            Returns the value of the AutoScrollToCurrentItemProperty
+            </summary>
+            <param name="obj">The dependency-object whose value should be returned</param>
+            <returns>The value of the given property</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.AttachedProperties.ListBoxExtenders.SetAutoScrollToCurrentItem(System.Windows.DependencyObject,System.Boolean)">
+            <summary>
+            Sets the value of the AutoScrollToCurrentItemProperty
+            </summary>
+            <param name="obj">The dependency-object whose value should be set</param>
+            <param name="value">The value which should be assigned to the AutoScrollToCurrentItemProperty</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.AttachedProperties.ListBoxExtenders.OnAutoScrollToCurrentItemChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            This method will be called when the AutoScrollToCurrentItem
+            property was changed
+            </summary>
+            <param name="s">The sender (the ListBox)</param>
+            <param name="e">Some additional information</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.AttachedProperties.ListBoxExtenders.OnAutoScrollToCurrentItem(System.Windows.Controls.ListBox,System.Int32)">
+            <summary>
+            This method will be called when the ListBox should
+            be scrolled to the given index
+            </summary>
+            <param name="listBox">The ListBox which should be scrolled</param>
+            <param name="index">The index of the item to which it should be scrolled</param>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.Services.WpfMessageBoxService">
+            <summary>
+            This class implements the IMessageBoxService for WPF purposes.
+            </summary>
+            <author>Sacha Barber</author>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.Services.MessageBox.IMessageBoxService">
+            <summary>
+            This interface defines a interface that will allow 
+            a ViewModel to show a message box
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Services.MessageBox.IMessageBoxService.ShowError(System.String)">
+            <summary>
+            Shows an error message
+            </summary>
+            <param name="message">The error message</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Services.MessageBox.IMessageBoxService.ShowInformation(System.String)">
+            <summary>
+            Shows an information message
+            </summary>
+            <param name="message">The information message</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Services.MessageBox.IMessageBoxService.ShowWarning(System.String)">
+            <summary>
+            Shows an warning message
+            </summary>
+            <param name="message">The warning message</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Services.MessageBox.IMessageBoxService.ShowYesNo(System.String,BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogIcons)">
+            <summary>
+            Displays a Yes/No dialog and returns the user input.
+            </summary>
+            <param name="message">The message to be displayed.</param>
+            <param name="icon">The icon to be displayed.</param>
+            <returns>User selection.</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Services.MessageBox.IMessageBoxService.ShowYesNoCancel(System.String,BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogIcons)">
+            <summary>
+            Displays a Yes/No/Cancel dialog and returns the user input.
+            </summary>
+            <param name="message">The message to be displayed.</param>
+            <param name="icon">The icon to be displayed.</param>
+            <returns>User selection.</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Services.MessageBox.IMessageBoxService.ShowOkCancel(System.String,BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogIcons)">
+            <summary>
+            Displays a OK/Cancel dialog and returns the user input.
+            </summary>
+            <param name="message">The message to be displayed.</param>
+            <param name="icon">The icon to be displayed.</param>
+            <returns>User selection.</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.Services.WpfMessageBoxService.ShowError(System.String)">
+            <summary>
+            Displays an error dialog with a given message.
+            </summary>
+            <param name="message">The message to be displayed.</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.Services.WpfMessageBoxService.ShowInformation(System.String)">
+            <summary>
+            Displays an error dialog with a given message.
+            </summary>
+            <param name="message">The message to be displayed.</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.Services.WpfMessageBoxService.ShowWarning(System.String)">
+            <summary>
+            Displays an error dialog with a given message.
+            </summary>
+            <param name="message">The message to be displayed.</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.Services.WpfMessageBoxService.ShowYesNo(System.String,BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogIcons)">
+            <summary>
+            Displays a Yes/No dialog and returns the user input.
+            </summary>
+            <param name="message">The message to be displayed.</param>
+            <param name="icon">The icon to be displayed.</param>
+            <returns>User selection.</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.Services.WpfMessageBoxService.ShowYesNoCancel(System.String,BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogIcons)">
+            <summary>
+            Displays a Yes/No/Cancel dialog and returns the user input.
+            </summary>
+            <param name="message">The message to be displayed.</param>
+            <param name="icon">The icon to be displayed.</param>
+            <returns>User selection.</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.Services.WpfMessageBoxService.ShowOkCancel(System.String,BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogIcons)">
+            <summary>
+            Displays a OK/Cancel dialog and returns the user input.
+            </summary>
+            <param name="message">The message to be displayed.</param>
+            <param name="icon">The icon to be displayed.</param>
+            <returns>User selection.</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.Services.WpfMessageBoxService.ShowMessage(System.String,System.String,BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogIcons)">
+            <summary>
+            Shows a standard System.Windows.MessageBox using the parameters requested
+            </summary>
+            <param name="message">The message to be displayed.</param>
+            <param name="heading">The heading to be displayed</param>
+            <param name="icon">The icon to be displayed.</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.Services.WpfMessageBoxService.ShowQuestionWithButton(System.String,BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogIcons,BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogButtons)">
+            <summary>
+            Shows a standard System.Windows.MessageBox using the parameters requested
+            but will return a translated result to enable adhere to the IMessageBoxService
+            implementation required. 
+            
+            This abstraction allows for different frameworks to use the same ViewModels but supply
+            alternative implementations of core service interfaces
+            </summary>
+            <param name="message">The message to be displayed.</param>
+            <param name="icon">The icon to be displayed.</param>
+            <param name="button"></param>
+            <returns>CustomDialogResults results to use</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.Services.WpfMessageBoxService.GetImage(BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogIcons)">
+            <summary>
+            Translates a CustomDialogIcons into a standard WPF System.Windows.MessageBox MessageBoxImage.
+            This abstraction allows for different frameworks to use the same ViewModels but supply
+            alternative implementations of core service interfaces
+            </summary>
+            <param name="icon">The icon to be displayed.</param>
+            <returns>A standard WPF System.Windows.MessageBox MessageBoxImage</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.Services.WpfMessageBoxService.GetButton(BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogButtons)">
+            <summary>
+            Translates a CustomDialogButtons into a standard WPF System.Windows.MessageBox MessageBoxButton.
+            This abstraction allows for different frameworks to use the same ViewModels but supply
+            alternative implementations of core service interfaces
+            </summary>
+            <param name="btn">The button type to be displayed.</param>
+            <returns>A standard WPF System.Windows.MessageBox MessageBoxButton</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.Services.WpfMessageBoxService.GetResult(System.Windows.MessageBoxResult)">
+            <summary>
+            Translates a standard WPF System.Windows.MessageBox MessageBoxResult into a
+            CustomDialogIcons.
+            This abstraction allows for different frameworks to use the same ViewModels but supply
+            alternative implementations of core service interfaces
+            </summary>
+            <param name="result">The standard WPF System.Windows.MessageBox MessageBoxResult</param>
+            <returns>CustomDialogResults results to use</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.ViewModels.ActionViewModel`3.ActionComplete(BeckmanCoulter.Silas.IMessageContext{BeckmanCoulter.Silas.Messages.ICommandReplyMessage})">
+            <summary>
+            This method will be called by the parent view model whenever the user
+            has run an action.  Override it to perform any actions that may rely
+            on the results of the action.
+            </summary>
+            <param name="reply">The reply for the Command message that was sent</param>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Dialogs.WPF.ViewModels.ActionViewModel`3.CommandName">
+            <summary>
+            This is the name that will be assigned to the saved command if none
+            has been assigned.  By default it is the same as the action's "Name"
+            property with all spaces removed.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Dialogs.WPF.ViewModels.ActionViewModel`3.DisplayName">
+            <summary>
+            The name of this action.  This name will be displayed in the list
+            of all available actions from which the user can choose.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Dialogs.WPF.ViewModels.ActionViewModel`3.Order">
+            <summary>
+            The order in which this action should be displayed relative to
+            all the available actions.  The action with the smallest "Order"
+            value will be listed first.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Dialogs.WPF.ViewModels.ActionViewModel`3.View">
+            <summary>
+            The WPF FrameworkElement that will be used as the view for this action.
+            If this returns null, the default message will be displayed, notifying
+            the user that there are no options for this action.
+            </summary>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.IConfigurationViewModel`2">
+            <summary>
+            This interface is used by developers to create their own
+            custom viewmodel to be used by the more general IOptionsDialog
+            interface.
+            </summary>
+            <typeparam name="TConfig"></typeparam>
+            <typeparam name="TStatus"></typeparam>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommand`1">
+            <summary>
+            An <see cref="T:System.Windows.Input.ICommand"/> whose delegates can be attached for <see cref="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommand`1.Execute(`0)"/> and <see cref="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommand`1.CanExecute(`0)"/>.
+            It also implements the <see cref="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.IActiveAware"/> interface, which is
+            useful when registering this command in a <see cref="!:CompositeCommand"/>
+            that monitors command's activity.
+            </summary>
+            <typeparam name="T">Parameter type.</typeparam>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommandBase">
+            <summary>
+            An <see cref="T:System.Windows.Input.ICommand"/> whose delegates can be attached for <see cref="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommandBase.Execute(System.Object)"/> and <see cref="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommandBase.CanExecute(System.Object)"/>.
+            It also implements the <see cref="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.IActiveAware"/> interface, which is
+            useful when registering this command in a CompositeCommand
+            that monitors command's activity.
+            </summary>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.IActiveAware">
+            <summary>
+            Interface that defines if the object instance is active
+            and notifies when the activity changes.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Dialogs.WPF.IActiveAware.IsActive">
+            <summary>
+            Gets or sets a value indicating whether the object is active.
+            </summary>
+            <value><see langword="true" /> if the object is active; otherwise <see langword="false" />.</value>
+        </member>
+        <member name="E:BeckmanCoulter.Silas.Module.Dialogs.WPF.IActiveAware.IsActiveChanged">
+            <summary>
+            Notifies that the value for <see cref="P:BeckmanCoulter.Silas.Module.Dialogs.WPF.IActiveAware.IsActive"/> property has changed.
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommandBase.#ctor(System.Action{System.Object},System.Func{System.Object,System.Boolean})">
+            <summary>
+            Creates a new instance of a <see cref="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommandBase"/>, specifying both the execute action and the can execute function.
+            </summary>
+            <param name="executeMethod">The <see cref="T:System.Action"/> to execute when <see cref="M:System.Windows.Input.ICommand.Execute(System.Object)"/> is invoked.</param>
+            <param name="canExecuteMethod">The <see cref="T:System.Func`2"/> to invoked when <see cref="M:System.Windows.Input.ICommand.CanExecute(System.Object)"/> is invoked.</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommandBase.OnCanExecuteChanged">
+            <summary>
+            Raises <see cref="E:System.Windows.Input.ICommand.CanExecuteChanged"/> on the UI thread so every 
+            command invoker can requery <see cref="M:System.Windows.Input.ICommand.CanExecute(System.Object)"/> to check if the
+            CompositeCommand can execute.
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommandBase.RaiseCanExecuteChanged">
+            <summary>
+            Raises <see cref="E:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommandBase.CanExecuteChanged"/> on the UI thread so every command invoker
+            can requery to check if the command can execute.
+            <remarks>Note that this will trigger the execution of <see cref="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommandBase.CanExecute(System.Object)"/> once for each invoker.</remarks>
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommandBase.OnIsActiveChanged">
+            <summary>
+            This raises the <see cref="E:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommandBase.IsActiveChanged"/> event.
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommandBase.Execute(System.Object)">
+            <summary>
+            Executes the command with the provided parameter by invoking the <see cref="T:System.Action`1"/> supplied during construction.
+            </summary>
+            <param name="parameter"></param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommandBase.CanExecute(System.Object)">
+            <summary>
+            Determines if the command can execute with the provided parameter by invoing the <see cref="T:System.Func`2"/> supplied during construction.
+            </summary>
+            <param name="parameter">The parameter to use when determining if this command can execute.</param>
+            <returns>Returns <see langword="true"/> if the command can execute.  <see langword="False"/> otherwise.</returns>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommandBase.IsActive">
+            <summary>
+            Gets or sets a value indicating whether the object is active.
+            </summary>
+            <value><see langword="true" /> if the object is active; otherwise <see langword="false" />.</value>
+        </member>
+        <member name="E:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommandBase.IsActiveChanged">
+            <summary>
+            Fired if the <see cref="P:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommandBase.IsActive"/> property changes.
+            </summary>
+        </member>
+        <member name="E:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommandBase.CanExecuteChanged">
+            <summary>
+            Occurs when changes occur that affect whether or not the command should execute. You must keep a hard
+            reference to the handler to avoid garbage collection and unexpected results. See remarks for more information.
+            </summary>
+            <remarks>
+            When subscribing to the <see cref="E:System.Windows.Input.ICommand.CanExecuteChanged"/> event using 
+            code (not when binding using XAML) will need to keep a hard reference to the event handler. This is to prevent 
+            garbage collection of the event handler because the command implements the Weak Event pattern so it does not have
+            a hard reference to this handler. An example implementation can be seen in the CompositeCommand and CommandBehaviorBase
+            classes. In most scenarios, there is no reason to sign up to the CanExecuteChanged event directly, but if you do, you
+            are responsible for maintaining the reference.
+            </remarks>
+            <example>
+            The following code holds a reference to the event handler. The myEventHandlerReference value should be stored
+            in an instance member to avoid it from being garbage collected.
+            <code>
+            EventHandler myEventHandlerReference = new EventHandler(this.OnCanExecuteChanged);
+            command.CanExecuteChanged += myEventHandlerReference;
+            </code>
+            </example>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommand`1.#ctor(System.Action{`0})">
+            <summary>
+            Initializes a new instance of <see cref="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommand`1"/>.
+            </summary>
+            <param name="executeMethod">Delegate to execute when Execute is called on the command.  This can be null to just hook up a CanExecute delegate.</param>
+            <remarks><seealso cref="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommand`1.CanExecute(`0)"/> will always return true.</remarks>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommand`1.#ctor(System.Action{`0},System.Func{`0,System.Boolean})">
+            <summary>
+            Initializes a new instance of <see cref="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommand`1"/>.
+            </summary>
+            <param name="executeMethod">Delegate to execute when Execute is called on the command.  This can be null to just hook up a CanExecute delegate.</param>
+            <param name="canExecuteMethod">Delegate to execute when CanExecute is called on the command.  This can be null.</param>
+            <exception cref="T:System.ArgumentNullException">When both <paramref name="executeMethod"/> and <paramref name="canExecuteMethod"/> ar <see langword="null"/>.</exception>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommand`1.CanExecute(`0)">
+            <summary>
+            Determines if the command can execute by invoked the <see cref="T:System.Func`2"/> provided during construction.
+            </summary>
+            <param name="parameter">Data used by the command to determine if it can execute.</param>
+            <returns>
+            <see langword="true"/> if this command can be executed; otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommand`1.Execute(`0)">
+            <summary>
+            Executes the command and invokes the <see cref="T:System.Action`1"/> provided during construction.
+            </summary>
+            <param name="parameter">Data used by the command.</param>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommand">
+            <summary>
+            An <see cref="T:System.Windows.Input.ICommand"/> whose delegates do not take any parameters for <see cref="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommand.Execute"/> and <see cref="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommand.CanExecute"/>.
+            </summary>
+            <seealso cref="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommandBase"/>
+            <seealso cref="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommand`1"/>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommand.#ctor(System.Action)">
+            <summary>
+            Creates a new instance of <see cref="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommand"/> with the <see cref="T:System.Action"/> to invoke on execution.
+            </summary>
+            <param name="executeMethod">The <see cref="T:System.Action"/> to invoke when <see cref="M:System.Windows.Input.ICommand.Execute(System.Object)"/> is called.</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommand.#ctor(System.Action,System.Func{System.Boolean})">
+            <summary>
+            Creates a new instance of <see cref="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommand"/> with the <see cref="T:System.Action"/> to invoke on execution
+            and a <see langword="Func"/> to query for determining if the command can execute.
+            </summary>
+            <param name="executeMethod">The <see cref="T:System.Action"/> to invoke when <see cref="M:System.Windows.Input.ICommand.Execute(System.Object)"/> is called.</param>
+            <param name="canExecuteMethod">The <see cref="T:System.Func`1"/> to invoke when <see cref="M:System.Windows.Input.ICommand.CanExecute(System.Object)"/> is called</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommand.Execute">
+            <summary>
+             Executes the command.
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.DelegateCommand.CanExecute">
+            <summary>
+            Determines if the command can be executed.
+            </summary>
+            <returns>Returns <see langword="true"/> if the command can execute,otherwise returns <see langword="false"/>.</returns>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.Views.Controls.TimePicker">
+            <summary>
+            Time Picker as a control that lets the user select a specific time
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Dialogs.WPF.Views.Controls.TimePicker.MinTimeProperty">
+            <summary>
+            Gets or sets the minimum time selected
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Dialogs.WPF.Views.Controls.TimePicker.MaxTimeProperty">
+            <summary>
+            Gets or sets the maximum time that can be selected
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Dialogs.WPF.Views.Controls.TimePicker.SelectedTimeProperty">
+            <summary>
+            Backing store for the selected timestamp 
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Dialogs.WPF.Views.Controls.TimePicker.SelectedHourProperty">
+            <summary>
+            Backing store for the selected hour
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Dialogs.WPF.Views.Controls.TimePicker.SelectedMinuteProperty">
+            <summary>
+            Backing store for the selected minutes
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Dialogs.WPF.Views.Controls.TimePicker.SelectedSecondProperty">
+            <summary>
+            Backing store for the selected second
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Dialogs.WPF.Views.Controls.TimePicker.SelectedTimeChangedEvent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.Views.Controls.TimePicker.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.Views.Controls.TimePicker.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.Views.Controls.TimePicker.OnApplyTemplate">
+            <summary>
+            override to hook to the Control template elements
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.Views.Controls.TimePicker.ExposeTryFocusNeighbourControl(System.Windows.Controls.TextBox,System.Windows.Controls.TextBox,System.Windows.Controls.TextBox,System.Windows.Input.Key)">
+            <summary>
+            Exposes TryFocusNeighbourControl
+            </summary>
+            <param name="currentControl"></param>
+            <param name="leftControl"></param>
+            <param name="rightControl"></param>
+            <param name="keyPressed"></param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.Views.Controls.TimePicker.ExposeAdjustCarretIndexOrMoveToNeighbour(System.Windows.Controls.TextBox,System.Windows.Controls.TextBox)">
+            <summary>
+            Exposes the AdjustCarretIndexOrMoveToNeighbour
+            </summary>
+            <param name="current"></param>
+            <param name="neighbour"></param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.Views.Controls.TimePicker.ExposeTrimSelectedText(System.Windows.Controls.TextBox)">
+            <summary>
+            Exposes the TrimSelectedText method
+            </summary>
+            <param name="textBox"></param>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Dialogs.WPF.Views.Controls.TimePicker.MinTime">
+            <summary>
+            Gets or sets the minimum time that can be selected
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Dialogs.WPF.Views.Controls.TimePicker.MaxTime">
+            <summary>
+            Gets or sets the maximum time that can be selected
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Dialogs.WPF.Views.Controls.TimePicker.SelectedTime">
+            <summary>
+            Gets or sets the selected timestamp 
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Dialogs.WPF.Views.Controls.TimePicker.SelectedHour">
+            <summary>
+            Gets or sets the selected Hour
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Dialogs.WPF.Views.Controls.TimePicker.SelectedMinute">
+            <summary>
+            Gets or sets the selected minutes
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Dialogs.WPF.Views.Controls.TimePicker.SelectedSecond">
+            <summary>
+            Gets or sets the selected second
+            </summary>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.Views.Controls.TimeSelectedChangedEventHandler">
+            <summary>
+            Delegate for the TimeSelectedChanged event
+            </summary>
+            <param name="sender">The object raising the event</param>
+            <param name="e">The routed event arguments</param>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.Views.Controls.TimeSelectedChangedRoutedEventArgs">
+            <summary>
+            Routed event arguments for the TimeSelectedChanged event
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Dialogs.WPF.Views.Controls.TimeSelectedChangedRoutedEventArgs.#ctor(System.Windows.RoutedEvent)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="routedEvent">The event that is raised </param>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Dialogs.WPF.Views.Controls.TimeSelectedChangedRoutedEventArgs.NewTime">
+            <summary>
+            Gets or sets the new time
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Dialogs.WPF.Views.Controls.TimeSelectedChangedRoutedEventArgs.OldTime">
+            <summary>
+            Gets or sets the old time
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Dialogs.WPF.ViewModels.ActionConfigViewModel`2.ElapsedTime">
+            <summary>
+            The total amount of time the current action has been running or 00:00:00
+            if no action is currently running.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.Commands.WeakEventHandlerManager">
+            <summary>
+            Handles management and dispatching of EventHandlers in a weak way.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.WeakEventHandlerManager.CallWeakReferenceHandlers(System.Object,System.Collections.Generic.List{System.WeakReference})">
+            <summary>
+             Invokes the handlers 
+            </summary>
+            <param name="sender"></param>
+            <param name="handlers"></param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.WeakEventHandlerManager.AddWeakReferenceHandler(System.Collections.Generic.List{System.WeakReference}@,System.EventHandler,System.Int32)">
+            <summary>
+             Adds a handler to the supplied list in a weak way.
+            </summary>
+            <param name="handlers">Existing handler list.  It will be created if null.</param>
+            <param name="handler">Handler to add.</param>
+            <param name="defaultListSize">Default list size.</param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.WeakEventHandlerManager.RemoveWeakReferenceHandler(System.Collections.Generic.List{System.WeakReference},System.EventHandler)">
+            <summary>
+             Removes an event handler from the reference list.
+            </summary>
+            <param name="handlers">Handler list to remove reference from.</param>
+            <param name="handler">Handler to remove.</param>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.Commands.WeakEventHandlerManager.DispatcherProxy">
+            <summary>
+            Hides the dispatcher mis-match between Silverlight and .Net, largely so code reads a bit easier
+            </summary>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.IMessageRequest`2">
+            <summary>
+            The IMessageInterface encapsulates the sending of a single request
+            and the receiving of its reply.  It can be used to track the progress
+            of the request as well as the state of the target module.
+            </summary>
+            <typeparam name="TRequest">The ISilasMessage based type of the request</typeparam>
+            <typeparam name="TReply">The ISilasMessage based type of the reply</typeparam>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.IMessageRequest`2.SendRequest">
+            <summary>
+            Send the message that was provided in the constructor, returning
+            an observable that can be used to watch for the reply.  This will
+            attempt to load the module before sending the request.
+            </summary>
+            <returns>An observable of the single reply message.  Note that this is the same observable as the Replies property.</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.IMessageRequest`2.SendRequest(System.TimeSpan)">
+            <summary>
+            Send the message that was provided in the constructor, returning
+            an observable that can be used to watch for the reply.  This will
+            attempt to load the module before sending the request.
+            </summary>
+            <param name="timeout">The amount of time to wait for a response</param>
+            <returns>An observable of the single reply message.  Note that this is the same observable as the Replies property.</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.IMessageRequest`2.SendRequestAndMonitor(System.Func{BeckmanCoulter.Silas.IMessageContext,System.Boolean})">
+            <summary>
+            Waits until the module is available (loaded and replying to
+            Existence Queries) and then sends the request.  The returned
+            observable will continue watching the module's availability
+            and will throw an exception if the module becomes unavailable
+            in the middle of handling the request.
+            </summary>
+            <param name="condition">An optional condition which will be applied to incoming messages</param>
+            <returns>An observable of the single reply message.  Note that this is the same observable as the Replies property.</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.IMessageRequest`2.SendRequestAndMonitor(System.TimeSpan,System.Func{BeckmanCoulter.Silas.IMessageContext,System.Boolean})">
+            <summary>
+            Waits until the module is available (loaded and replying to
+            Existence Queries) and then sends the request.  The returned
+            observable will continue watching the module's availability
+            and will throw an exception if the module becomes unavailable
+            in the middle of handling the request.
+            </summary>
+            <param name="timeout">The amount of time to wait for a response</param>
+            <param name="condition">An optional condition which will be applied to incoming messages</param>
+            <returns>An observable of the single reply message.  Note that this is the same observable as the Replies property.</returns>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.IMessageRequest`2.Request">
+            <summary>
+            The request being forwarded as part of this context
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.IMessageRequest`2.IsRequestComplete">
+            <summary>
+            True if the request has successfully been sent and a reply was received
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.IMessageRequest`2.WasRequestSent">
+            <summary>
+            True once the request has been sent
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.IMessageRequest`2.Reply">
+            <summary>
+            The reply received or null if a reply has not yet been received
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.IMessageRequest`2.Error">
+            <summary>
+            Any exception that has occurred while processing the request or null if no exception has occurred
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.IMessageRequest`2.IsLoaded">
+            <summary>
+            True if the target module has been loaded
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.IMessageRequest`2.IsAlive">
+            <summary>
+            True if the target module is responding to Existence Queries
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.IMessageRequest`2.TimesAlive">
+            <summary>
+            A stream of times at which the target module has been "alive".  A module
+            is alive if it is responding to pings.  The observable only fires once
+            when the module first becomes alive (not once for every ping acknowledged).
+            If a module goes dead but later becomes alive again, this observable will
+            fire.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.IMessageRequest`2.TimesDead">
+            <summary>
+            A stream of times at which the target module has been "dead".  A module
+            is dead if it is not responding to pings in the expected time.  The
+            observable only fires once when the module first becomes dead (not once
+            for every ping no acknowledged).  If a modules becomes alive but later
+            becomes dead again, this observable will fire.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.IMessageRequest`2.Loads">
+            <summary>
+            The stream of times at which the target module has been loaded.  This
+            only triggers when the module is first loaded (registered), not each
+            time a Load Module message has been successfully processed.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.IMessageRequest`2.Unloads">
+            <summary>
+            The stream of times at which the target module has been unloaded.  This
+            only triggers when the module has been completely unloaded (unregistered),
+            not each time an Unload Module message has been successfully processed.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.IMessageRequest`2.Replies">
+            <summary>
+            The single reply received from the module to which the request was sent
+            </summary>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.IOwned`1">
+            <summary>
+            Classes implementing this interface wrap objects and indicate that
+            the wrapped object is owned by some other object.  In practice, this
+            means that the object that owns an IOwned object is responsible for
+            disposing of that object.  Classes that implement IOwned may have
+            additional actions required to properly disposed the wrapped object.
+            </summary>
+            <typeparam name="T">The type of the object that is owned</typeparam>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.IOwned`1.Value">
+            <summary>
+            The object that is owned
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.IConsumerHandler`2.BroadcastData(BeckmanCoulter.Silas.Messages.IDeviceDataMessage)">
+            <summary>
+            Broadcast the given device data message to any listeners
+            </summary>
+            <param name="data">The data to be broadcast</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.IConsumerHandler`2.BroadcastTouch(BeckmanCoulter.Silas.Messages.ITouchMessage)">
+            <summary>
+            Broadcast a touch message to any listeners
+            </summary>
+            <param name="touch">The touch message to be broadcast</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.ConsumerHandler`3.#ctor(System.Func{BeckmanCoulter.Silas.Module.Dialogs.WPF.ViewModels.RunConfigViewModel{`0,`1}})">
+            <summary>
+            Create a new ConsumerHandler
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.ConsumerHandler`3.BroadcastData(BeckmanCoulter.Silas.Messages.IDeviceDataMessage)">
+            <summary>
+            Broadcast the given device data message to any listeners
+            </summary>
+            <param name="data">The data to be broadcast</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.ConsumerHandler`3.BroadcastTouch(BeckmanCoulter.Silas.Messages.ITouchMessage)">
+            <summary>
+            Broadcast a touch message to any listeners
+            </summary>
+            <param name="touch">The touch message to be broadcast</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.ConsumerHandler`3.Start">
+            <summary>
+            Starts the command handler.  When this method returns, it will be listening for
+            commands and dispatching them to the appropriate handlers.
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.ConsumerHandler`3.OnStarting">
+            <summary>
+            Override this method to perform activities that should occur before
+            the command handler is started.
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.ConsumerHandler`3.OnStarted">
+            <summary>
+            Override this method to perform activities just after the command
+            handler has been started (but before the Start method has returned).
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.ConsumerHandler`3.Stop">
+            <summary>
+            Stop the command handler.  This will cause the command handler to stop
+            listening for commands.  Any commands currently running will be sent
+            an abort message and will complete independent of this method returning.
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.ConsumerHandler`3.GetRequiredTranslations">
+            <summary>
+            Override this method to notify the associated IModule
+            of translations that this command handler requires.
+            Addresses in Translations will be modified if
+            the module's %Messaging branch contains an override
+            for the translation (based on the address' alias).
+            </summary>
+            <returns>A collection of Translations that the associated IModule will translate based on the module's %Messaging branch</returns>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageHandlers.ConsumerHandler`3.Module">
+            <summary>
+            The ISilasModule to which this command handler is associated.  This will
+            not be set until after the command handler has been started.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageHandlers.ConsumerHandler`3.Portal">
+            <summary>
+            The ISilasPortal to which this command handler is associated.  This will
+            not be available until after the command handler has been started.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageHandlers.ConsumerHandler`3.IsRunning">
+            <summary>
+            The status of the command handler.  True if the command
+            handler has been started, false otherwise.
+            </summary>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.MessageRequest`2">
+            <summary>
+            A class that can be used to send a single request to a target module
+            and listen for a response.  The class can also be used to monitor the
+            status of the module while waiting for a response.
+            </summary>
+            <typeparam name="TRequest">The ISilasMessage based type of the request</typeparam>
+            <typeparam name="TReply">The ISilasMessage based type of the reply</typeparam>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageRequest`2.#ctor(`0,System.String,System.String,BeckmanCoulter.Silas.Module.IProxyModule)">
+            <summary>
+            Create a new MessageRequest that will send the given message
+            and provide properties for tracking the target module and any reply
+            that is sent.  Note that the given message will not be sent until the
+            SendRequest method is called.
+            </summary>
+            <param name="requestMessage">The message to be sent</param>
+            <param name="requestType">The message type for the request message</param>
+            <param name="replyType">The message type of the expected reply message</param>
+            <param name="proxy">The proxy to use when sending and receiving messages</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageRequest`2.SendRequest">
+            <summary>
+            Send the message that was provided in the constructor, returning
+            an observable that can be used to watch for the reply.  This will
+            attempt to load the module before sending the request.
+            </summary>
+            <returns>An observable of the single reply message.  Note that this is the same observable as the Replies property.</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageRequest`2.SendRequest(System.TimeSpan)">
+            <summary>
+            Send the message that was provided in the constructor, returning
+            an observable that can be used to watch for the reply.  This will
+            attempt to load the module before sending the request.
+            </summary>
+            <param name="timeout">The amount of time to wait for a response</param>
+            <returns>An observable of the single reply message.  Note that this is the same observable as the Replies property.</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageRequest`2.SendRequestAndMonitor(System.Func{BeckmanCoulter.Silas.IMessageContext,System.Boolean})">
+            <summary>
+            Waits until the module is available (loaded and replying to
+            Existence Queries) and then sends the request.  The returned
+            observable will continue watching the module's availability
+            and will throw an exception if the module becomes unavailable
+            in the middle of handling the request.
+            </summary>
+            <param name="condition">An optional condition which will be applied to incoming messages</param>
+            <returns>An observable of the single reply message.  Note that this is the same observable as the Replies property.</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageRequest`2.SendRequestAndMonitor(System.TimeSpan,System.Func{BeckmanCoulter.Silas.IMessageContext,System.Boolean})">
+            <summary>
+            Waits until the module is available (loaded and replying to
+            Existence Queries) and then sends the request.  The returned
+            observable will continue watching the module's availability
+            and will throw an exception if the module becomes unavailable
+            in the middle of handling the request.
+            </summary>
+            <param name="timeout">The amount of time to wait for a response</param>
+            <param name="condition">An optional condition which will be applied to incoming messages</param>
+            <returns>An observable of the single reply message.  Note that this is the same observable as the Replies property.</returns>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageRequest`2.Request">
+            <summary>
+            The request being forwarded as part of this context
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageRequest`2.IsRequestComplete">
+            <summary>
+            True if the request has successfully been sent and a reply was received
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageRequest`2.WasRequestSent">
+            <summary>
+            True once the request has been sent
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageRequest`2.Reply">
+            <summary>
+            The reply received or null if a reply has not yet been received
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageRequest`2.Error">
+            <summary>
+            Any exception that has occurred while processing the request or null if no exception has occurred
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageRequest`2.IsLoaded">
+            <summary>
+            True if the target module has been loaded
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageRequest`2.IsAlive">
+            <summary>
+            True if the target module is responding to Existence Queries
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageRequest`2.TimesAlive">
+            <summary>
+            A stream of times at which the target module has been "alive".  A module
+            is alive if it is responding to pings.  The observable only fires once
+            when the module first becomes alive (not once for every ping acknowledged).
+            If a module goes dead but later becomes alive again, this observable will
+            fire.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageRequest`2.TimesDead">
+            <summary>
+            A stream of times at which the target module has been "dead".  A module
+            is dead if it is not responding to pings in the expected time.  The
+            observable only fires once when the module first becomes dead (not once
+            for every ping no acknowledged).  If a modules becomes alive but later
+            becomes dead again, this observable will fire.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageRequest`2.Loads">
+            <summary>
+            The stream of times at which the target module has been loaded.  This
+            only triggers when the module is first loaded (registered), not each
+            time a Load Module message has been successfully processed.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageRequest`2.Unloads">
+            <summary>
+            The stream of times at which the target module has been unloaded.  This
+            only triggers when the module has been completely unloaded (unregistered),
+            not each time an Unload Module message has been successfully processed.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageRequest`2.Replies">
+            <summary>
+            The single reply received from the module to which the request was sent
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.PropertyChangedEventHandlerExtensions.Notify(System.ComponentModel.PropertyChangedEventHandler,System.Linq.Expressions.Expression{System.Func{System.Object}})">
+            <summary>
+            Notifies listeners about a property change.
+            </summary>
+            <example>
+            The following code shows example usage of this method:
+            <code>
+            <![CDATA[
+            public class Employee : INotifyPropertyChanged
+            {
+                public event PropertyChangedEventHandler PropertyChanged;
+            
+                private string _firstName;
+                public string FirstName
+                {
+                    get { return this._firstName; }
+                    set
+                    {
+                        this._firstName = value;
+                        this.PropertyChanged.Notify(() => this.FirstName);
+                    }
+                }
+            }
+            ]]>
+            </code>
+            </example>
+            <param name="eventHandler">The event to raise.</param>
+            <param name="expression">An expression for the property that changed.</param>        
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.IProxyModule.Load">
+            <summary>
+            Send a message to Keeper to load the module being proxied without
+            waiting for a response.
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.IProxyModule.LoadAndObserve">
+            <summary>
+            Load the module to be proxied.  If it is already loaded, this
+            will up the refcount so that the module doesn't get unloaded
+            until we send an Unload message.
+            </summary>
+            <returns>
+            The stream of Load Finished messages sent by the Keeper for
+            the module being proxied.  Note that this includes Load
+            Finished messages that are the result of other applications
+            loading the proxied module as well.
+            </returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.IProxyModule.LoadAndObserve(System.TimeSpan)">
+            <summary>
+            Load the module to be proxied.  If it is already loaded, this
+            will up the refcount so that the module doesn't get unloaded
+            until we send an Unload message.
+            </summary>
+            <param name="timeout">The amount of time to wait for a response before the returned observable throws an exception</param>
+            <returns>
+            The stream of Load Finished messages sent by the Keeper for
+            the module being proxied.  Note that this includes Load
+            Finished messages that are the result of other applications
+            loading the proxied module as well.
+            </returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.IProxyModule.Unload">
+            <summary>
+            Send a message to the Keeper to unload the module being proxied without
+            waiting for a response.
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.IProxyModule.UnloadAndObserve">
+            <summary>
+            Unload the module being proxied.  This will only reduce the
+            refcount that the Keeper tracks.  If other modules have
+            loaded the module, it will stay loaded.
+            </summary>
+            <returns>
+            The stream of Unload Finished messages sent by the Keeper for
+            the module being proxied.  Note that this includes Unload
+            Finished messages that are the result of other applications
+            unloading the proxied module as well.
+            </returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.IProxyModule.UnloadAndObserve(System.TimeSpan)">
+            <summary>
+            Unload the module being proxied.  This will only reduce the
+            refcount that the Keeper tracks.  If other modules have
+            loaded the module, it will stay loaded.
+            </summary>
+            <param name="timeout">The amount of time to wait for a response before the returned observable throws an exception</param>
+            <returns>
+            The stream of Unload Finished messages sent by the Keeper for
+            the module being proxied.  Note that this includes Unload
+            Finished messages that are the result of other applications
+            unloading the proxied module as well.
+            </returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.IProxyModule.Initialize(System.TimeSpan)">
+            <summary>
+            Send an initialize command to the module being proxied.  The
+            returned IObservable can be used to watch for any reply
+            message.
+            </summary>
+            <param name="timeout"></param>
+            <returns>
+            The stream of command replies sent from the module being proxied.
+            Note that this includes all replies to initialize commands, not
+            just those sent by this class.  It also includes any replies
+            to future Initialize commands.
+            </returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.IProxyModule.Abort(System.TimeSpan)">
+            <summary>
+            Send an abort command to the module being proxied.  The
+            returned IObservable can be used to watch for any reply
+            messages.  Note that the SILAS specification does not
+            require modules to reply to Abort messages so there may
+            never be a reply.
+            </summary>
+            <param name="timeout"></param>
+            <returns>
+            The stream of abort replies sent from the module being proxied.
+            Note that this includes all replies to abort messages, not
+            just those sent by this class.  It also includes any replies
+            to future Abort messages.
+            </returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.IProxyModule.PrepareRequest``2(``0,System.String,System.String)">
+            <summary>
+            Create a new MessageRequest that can be used to send a request to
+            the proxied module and then track the module's status as well as
+            watch for a reply.
+            </summary>
+            <typeparam name="TRequest">The type of the request message</typeparam>
+            <typeparam name="TReply">The type of the expected reply message</typeparam>
+            <param name="request">The request that will be assigned to the MessageRequest</param>
+            <param name="requestType">The type of the SILAS message that will be sent</param>
+            <param name="replyType">The type of the SILAS message that is expected to be returned by the proxied module</param>
+            <returns>The MessageRequest object that can be used to send the request and monitor the module and its response</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.IProxyModule.Send(BeckmanCoulter.Silas.ISilasMessage,System.String)">
+            <summary>
+            Send a SILAS message to the module being proxied without
+            listening for a response.
+            </summary>
+            <param name="message">The message to send to the module being proxied</param>
+            <param name="msgType">The message type of the message being sent (e.g. Command)</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.IProxyModule.SendAndObserve(System.String,System.String,BeckmanCoulter.Silas.ISilasMessage,System.TimeSpan,System.Func{BeckmanCoulter.Silas.IMessageContext,System.Boolean})">
+            <summary>
+            Sends a SILAS message to the module being proxied and returns
+            an IObservable that can be used to listen for a response.
+            </summary>
+            <param name="requestType">The type of the message being sent (e.g. Command)</param>
+            <param name="replyType">The type of the reply message that is expected (e.g. Command Reply)</param>
+            <param name="message">The message to send to the module being proxied</param>
+            <param name="condition">A condition that will be applied to each incoming message when inspecting incoming messages for a reply</param>
+            <param name="timeout"></param>
+            <returns>The stream of messages from the module being proxied with the given reply type</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.IProxyModule.SendCommand(System.String,BeckmanCoulter.Silas.Messages.ICommandParametersMessage,System.TimeSpan)">
+            <summary>
+            Sends a command message to the module being proxied and returns
+            an IObservable that can be used to listen for a response.
+            </summary>
+            <param name="commandName">The name of the command to send</param>
+            <param name="parameters">The parameters of the command to send</param>
+            <param name="timeout"></param>
+            <returns>The stream of Command Reply messages from the module being proxied</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.IProxyModule.SetExistenceQueryTimeout(System.TimeSpan)">
+            <summary>
+            Set the IProxyModule's ExistenceQueryTimeout.  This method will also
+            reset the IProxyModule's state so that it is "dead" and restart the
+            process of sending Existence Query messages using the new timeout.
+            </summary>
+            <param name="timeout">The amount of time to wait after sending an Existence Query before we decide the module is dead</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.IProxyModule.SetExistenceQueryInterval(System.TimeSpan)">
+            <summary>
+            Set the IProxyModule's ExistenceQueryInterval.  This method will
+            also reset the IProxyModule's state so that it is "dead" and restart
+            the process of sending Existence Query messages using the new timeout.
+            </summary>
+            <param name="interval">The amount of time to wait before sending the next Existence Query message</param>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.IProxyModule.ExistenceQueryTimeout">
+            <summary>
+            The amount of time the IProxyModule will wait for a
+            response to an Existence Query.  If the module does
+            not respond in this amount of time, the IProxyModule
+            will go "dead".
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.IProxyModule.ExistenceQueryInterval">
+            <summary>
+            The amount of time the IProxyModule will wait before
+            sending another Existence Query message.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.IProxyModule.IsLoaded">
+            <summary>
+            True if the module has been loaded (by us or anyone else)
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.IProxyModule.IsAlive">
+            <summary>
+            True if the module is actively responding to existence
+            queries (by us or anyone else)
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.IProxyModule.ModuleName">
+            <summary>
+            The name of the module being proxied
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.IProxyModule.Loads">
+            <summary>
+            The stream of times when the module was loaded (as a 
+            result of seeing a Module Registered message).
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.IProxyModule.Unloads">
+            <summary>
+            The stream of times when the module was unloaded (as
+            a result of seeing a Module Unregistered message).
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.IProxyModule.TimesAlive">
+            <summary>
+            The stream of times when a module has transferred
+            to a "living" state (as a result of getting an
+            Existence Query Reply).
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.IProxyModule.MessagesFromModule">
+            <summary>
+            The stream of messages being sent from the module being proxied
+            (to us or anyone else)
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.IProxyModule.MessagesToModule">
+            <summary>
+            The stream of messages being sent to the module being proxied
+            (from us or anyone else)
+            </summary>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.ITranslator">
+            <summary>
+            A translator is responsible for storing the translations for a module
+            and being able to "translate" an address to 
+            </summary>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.MessageHandlers.CommandDispatcherExtensions">
+            <summary>
+            A static class with extension methods that can be used to more easily map command handlers, simulators, and validators 
+            with an ICommandDispatcher.
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandDispatcherExtensions.MapValidator``1(BeckmanCoulter.Silas.Module.MessageHandlers.ICommandHandler,System.String,System.Func{BeckmanCoulter.Silas.Messages.CommandMessage{``0},BeckmanCoulter.Silas.Messages.ICommandReplyMessage})">
+            <summary>
+            Map a command type to a method that can be used to validate the parameters of the specified command type.
+            The mapped method should not interact with any hardware.
+            </summary>
+            <typeparam name="TParam">The type of the class that will hold the command's parameters.</typeparam>
+            <param name="commandHandler">The ICommandHandler that is being used to perform the mapping.</param>
+            <param name="commandName">The name of the command that is being mapped (e.g. "Run Protocol").</param>
+            <param name="validator">The method that will be called whenever the ICommandHandler is asked to validate the specified command's parameters.</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandDispatcherExtensions.MapValidator``1(BeckmanCoulter.Silas.Module.MessageHandlers.ICommandHandler,System.String,System.Func{``0,BeckmanCoulter.Silas.Messages.ICommandReplyMessage})">
+            <summary>
+            Map a command type to a method that can be used to validate the parameters of the specified command type.
+            The mapped method should not interact with any hardware.
+            </summary>
+            <typeparam name="TParam">The type of the class that will hold the command's parameters.</typeparam>
+            <param name="commandHandler">The ICommandHandler that is being used to perform the mapping.</param>
+            <param name="commandName">The name of the command that is being mapped (e.g. "Run Protocol").</param>
+            <param name="validator">The method that will be called whenever the ICommandHandler is asked to validate the specified command's parameters.</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandDispatcherExtensions.MapValidator``1(BeckmanCoulter.Silas.Module.MessageHandlers.ICommandHandler,System.String,System.Func{BeckmanCoulter.Silas.IMessageContext{BeckmanCoulter.Silas.Messages.CommandMessage{``0}},BeckmanCoulter.Silas.Messages.ICommandReplyMessage})">
+            <summary>
+            Map a command type to a method that can be used to validate the parameters of the specified command type.
+            The mapped method should not interact with any hardware.
+            </summary>
+            <typeparam name="TParam">The type of the class that will hold the command's parameters.</typeparam>
+            <param name="commandHandler">The ICommandHandler that is being used to perform the mapping.</param>
+            <param name="commandName">The name of the command that is being mapped (e.g. "Run Protocol").</param>
+            <param name="validator">The method that will be called whenever the ICommandHandler is asked to validate the specified command's parameters.</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandDispatcherExtensions.MapHandler(BeckmanCoulter.Silas.Module.MessageHandlers.ICommandHandler,System.String,System.Func{BeckmanCoulter.Silas.IMessageContext{BeckmanCoulter.Silas.Messages.CommandMessage},BeckmanCoulter.Silas.Messages.ICommandReplyMessage})">
+            <summary>
+            Map a command type to a method that can be used to run the command.  The
+            mapped method does not need to handle simulating the command if a simulator
+            has for this command type has also been specified using MapSimulator or you
+            wish to use the default simulator for this command.
+            </summary>
+            <param name="commandHandler">The ICommandHandler that is being used to perform the mapping.</param>
+            <param name="commandName">The name of the command that is being mapped (e.g. "Run Protocol").</param>
+            <param name="handler">The method that will be called whenever the ICommandHandler is asked to run the specified command.</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandDispatcherExtensions.MapHandler``1(BeckmanCoulter.Silas.Module.MessageHandlers.ICommandHandler,System.String,System.Func{BeckmanCoulter.Silas.Messages.CommandMessage{``0},BeckmanCoulter.Silas.Messages.ICommandReplyMessage})">
+            <summary>
+            Map a command type to a method that can be used to run the command.  The
+            mapped method does not need to handle simulating the command if a simulator
+            has for this command type has also been specified using MapSimulator or you
+            wish to use the default simulator for this command.
+            </summary>
+            <typeparam name="TParam">The type of the class that will hold the command's parameters.</typeparam>
+            <param name="commandHandler">The ICommandHandler that is being used to perform the mapping.</param>
+            <param name="commandName">The name of the command that is being mapped (e.g. "Run Protocol").</param>
+            <param name="handler">The method that will be called whenever the ICommandHandler is asked to run the specified command.</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandDispatcherExtensions.MapHandler``1(BeckmanCoulter.Silas.Module.MessageHandlers.ICommandHandler,System.String,System.Func{``0,BeckmanCoulter.Silas.Messages.ICommandReplyMessage})">
+            <summary>
+            Map a command type to a method that can be used to run the command.  The
+            mapped method does not need to handle simulating the command if a simulator
+            has for this command type has also been specified using MapSimulator or you
+            wish to use the default simulator for this command.
+            </summary>
+            <typeparam name="TParam">The type of the class that will hold the command's parameters.</typeparam>
+            <param name="commandHandler">The ICommandHandler that is being used to perform the mapping.</param>
+            <param name="commandName">The name of the command that is being mapped (e.g. "Run Protocol").</param>
+            <param name="handler">The method that will be called whenever the ICommandHandler is asked to run the specified command.</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandDispatcherExtensions.MapHandler``1(BeckmanCoulter.Silas.Module.MessageHandlers.ICommandHandler,System.String,System.Func{BeckmanCoulter.Silas.IMessageContext{BeckmanCoulter.Silas.Messages.CommandMessage{``0}},BeckmanCoulter.Silas.Messages.ICommandReplyMessage})">
+            <summary>
+            Map a command type to a method that can be used to run the command.  The
+            mapped method does not need to handle simulating the command if a simulator
+            has for this command type has also been specified using MapSimulator or you
+            wish to use the default simulator for this command.
+            </summary>
+            <typeparam name="TParam">The type of the class that will hold the command's parameters.</typeparam>
+            <param name="commandHandler">The ICommandHandler that is being used to perform the mapping.</param>
+            <param name="commandName">The name of the command that is being mapped (e.g. "Run Protocol").</param>
+            <param name="handler">The method that will be called whenever the ICommandHandler is asked to run the specified command.</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandDispatcherExtensions.MapSimulator``1(BeckmanCoulter.Silas.Module.MessageHandlers.ICommandHandler,System.String,System.Func{BeckmanCoulter.Silas.Messages.CommandMessage{``0},BeckmanCoulter.Silas.Messages.ICommandReplyMessage})">
+            <summary>
+            Map a command type to a method that can be used to simulate the command.  If
+            you do not need any specific functionality in a command's simulator, you do
+            not need to specify a simulator for it (the default simulator will be used
+            in this case).
+            </summary>
+            <typeparam name="TParam">The type of the class that will hold the command's parameters.</typeparam>
+            <param name="commandHandler">The ICommandHandler that is being used to perform the mapping.</param>
+            <param name="commandName">The name of the command that is being mapped (e.g. "Run Protocol").</param>
+            <param name="simulator">The method that will be called whenever the ICommandHandler is asked to simulate the specified command.</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandDispatcherExtensions.MapSimulator``1(BeckmanCoulter.Silas.Module.MessageHandlers.ICommandHandler,System.String,System.Func{``0,BeckmanCoulter.Silas.Messages.ICommandReplyMessage})">
+            <summary>
+            Map a command type to a method that can be used to simulate the command.  If
+            you do not need any specific functionality in a command's simulator, you do
+            not need to specify a simulator for it (the default simulator will be used
+            in this case).
+            </summary>
+            <typeparam name="TParam">The type of the class that will hold the command's parameters.</typeparam>
+            <param name="commandHandler">The ICommandHandler that is being used to perform the mapping.</param>
+            <param name="commandName">The name of the command that is being mapped (e.g. "Run Protocol").</param>
+            <param name="simulator">The method that will be called whenever the ICommandHandler is asked to simulate the specified command.</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandDispatcherExtensions.MapSimulator``1(BeckmanCoulter.Silas.Module.MessageHandlers.ICommandHandler,System.String,System.Func{BeckmanCoulter.Silas.IMessageContext{BeckmanCoulter.Silas.Messages.CommandMessage{``0}},BeckmanCoulter.Silas.Messages.ICommandReplyMessage})">
+            <summary>
+            Map a command type to a method that can be used to simulate the command.  If
+            you do not need any specific functionality in a command's simulator, you do
+            not need to specify a simulator for it (the default simulator will be used
+            in this case).
+            </summary>
+            <typeparam name="TParam">The type of the class that will hold the command's parameters.</typeparam>
+            <param name="commandHandler">The ICommandHandler that is being used to perform the mapping.</param>
+            <param name="commandName">The name of the command that is being mapped (e.g. "Run Protocol").</param>
+            <param name="simulator">The method that will be called whenever the ICommandHandler is asked to simulate the specified command.</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandDispatcherExtensions.MapDefaultValidator(BeckmanCoulter.Silas.Module.MessageHandlers.ICommandHandler,System.Func{BeckmanCoulter.Silas.IMessageContext{BeckmanCoulter.Silas.Messages.CommandMessage},BeckmanCoulter.Silas.Messages.ICommandReplyMessage})">
+            <summary>
+            Specify a method to be used for validating all commands' parameters
+            that have not had a validating method specifically assigned to them.
+            </summary>
+            <param name="commandHandler">The ICommandHandler that is being used to perform the mapping.</param>
+            <param name="validator">
+            The method that will be called whenever the ICommandHandler is asked to validate a command's
+            parameters and a specific validator has not been mapped to the command.
+            </param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandDispatcherExtensions.MapDefaultHandler(BeckmanCoulter.Silas.Module.MessageHandlers.ICommandHandler,System.Func{BeckmanCoulter.Silas.IMessageContext{BeckmanCoulter.Silas.Messages.CommandMessage},BeckmanCoulter.Silas.Messages.ICommandReplyMessage})">
+            <summary>
+            Specify a method to be used for running any commands that have not
+            had a method specifically assigned to them.
+            </summary>
+            <param name="commandHandler">The ICommandHandler that is being used to perform the mapping.</param>
+            <param name="handler">
+            The method that will be called whenever the ICommandHandler is asked to run
+            a command and a specific method has not been mapped to the command.
+            </param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandDispatcherExtensions.MapDefaultSimulator(BeckmanCoulter.Silas.Module.MessageHandlers.ICommandHandler,System.Func{BeckmanCoulter.Silas.IMessageContext{BeckmanCoulter.Silas.Messages.CommandMessage},BeckmanCoulter.Silas.Messages.ICommandReplyMessage})">
+            <summary>
+            Specify a method to be used for simulating any commands that have not
+            had a simulating method specifically assigned to them.  If the command
+            handler is asked to simulate a command but that command does not have
+            a mapped handler or simulator, the default simulator will not be run
+            (instead a reply will be sent notifying the caller that the command name
+            is invalid).
+            </summary>
+            <param name="commandHandler">The ICommandHandler that is being used to perform the mapping.</param>
+            <param name="simulator">
+            The method that will be called whenever the ICommandHandler is asked to
+            simulate a command and a specific simulating method has not been mapped to the command.
+            </param>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.ModuleInfoProvider`1">
+            <summary>
+            The ModuleInfoProvider class is used to read data from the Keeper about the current
+            module and provide this information to any other classes that need it (most notably 
+            the SilasModule class).
+            </summary>
+            <typeparam name="TConfig">The type that should be used for the module's Configuration branch.</typeparam>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.#ctor(BeckmanCoulter.Silas.Module.CommandDispatchers.ICommandDispatcher)">
+            <summary>
+            Create a new CommandHandler, using the given
+            ICommandDispatcher to dispatch commands to appropriate handlers.
+            </summary>
+            <param name="commandDispatcher">An ICommandDispatcher that will be used to dispatch incoming commands to appropriate handlers</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.RunCommand(BeckmanCoulter.Silas.Messages.ICommandMessage,System.TimeSpan)">
+            <summary>
+            Have the module run the given command with the given timeout.  This will send the command
+            via SILAS (or other appropriate communications) to the module.
+            </summary>
+            <param name="command">The command message to be run</param>
+            <param name="timeout">The time that the method should wait before timing out</param>
+            <returns>The command reply message returned in response to the command</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.SendAbort">
+            <summary>
+            Send an abort command to the module
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.BroadcastData(BeckmanCoulter.Silas.Messages.IDeviceDataMessage)">
+            <summary>
+            Broadcast the given device data message to any listeners
+            </summary>
+            <param name="data">The data to be broadcast</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.BroadcastTouch(BeckmanCoulter.Silas.Messages.ITouchMessage)">
+            <summary>
+            Broadcast a touch message to any listeners
+            </summary>
+            <param name="touch">The touch message to be broadcast</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.BroadcastRunTouch(BeckmanCoulter.Silas.Messages.IRunTouchMessage)">
+            <summary>
+            Broadcast a run touch message to any listeners
+            </summary>
+            <param name="runTouch">The run touch message to be broadcast</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.BroadcastSampleTouch(BeckmanCoulter.Silas.Messages.SampleTouchMessage)">
+            <summary>
+            Broadcast a sample touch message to any listeners.
+            </summary>
+            <param name="sampleTouch">The sample touch message to be broadcast</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.GetRunTouchMessage">
+            <summary>
+            Get the Run Touch message that will be sent during OnInitialize.
+            You can call GetDefaultRunTouchMessage to get a message populated
+            with known module information.
+            </summary>
+            <returns>The IRunTouchMessage to be sent as part of the module's initialization</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.GetDefaultRunTouchMessage">
+            <summary>
+            Get the default run touch message for this module.  It
+            will include the module's name in the TouchType as well
+            as the module's EXE version number and install version 
+            number ("Version" from the module's Keeper branch).
+            </summary>
+            <returns>The default run touch message for this module</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.OnInitialize(BeckmanCoulter.Silas.IMessageContext{BeckmanCoulter.Silas.Messages.CommandMessage})">
+            <summary>
+            Override this method to perform any custom actions that should occur when the
+            module is sent an Initialize command.  Call the base implementation to automatically
+            send out a Run Touch message containing the message provided by the GetRunTouchMessage
+            method.
+            </summary>
+            <param name="context">The context for the Initialize command that was received</param>
+            <returns>The command reply that should be sent to the sender of the command</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.OnOpen(BeckmanCoulter.Silas.IMessageContext{BeckmanCoulter.Silas.Messages.CommandMessage})">
+            <summary>
+            Override this method to perform any custom actions that should occur when the
+            module is sent an Open command.
+            </summary>
+            <param name="context">The context for the Open command that was received</param>
+            <returns>The command reply that should be sent to the sender of the command</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.OnClose(BeckmanCoulter.Silas.IMessageContext{BeckmanCoulter.Silas.Messages.CommandMessage})">
+            <summary>
+            Override this method to perform any custom actions that should occur when the
+            module is sent a Close command.
+            </summary>
+            <param name="context">The context for the Close command that was received</param>
+            <returns>The command reply that should be sent to the sender of the command</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.OnFinalize(BeckmanCoulter.Silas.IMessageContext{BeckmanCoulter.Silas.Messages.CommandMessage})">
+            <summary>
+            Override this method to perform any custom actions that should occur when the
+            module is sent a Finalize command.  Note that the module must still include the
+            necessary Keeper entries to request Finalize commands from SAMI.
+            </summary>
+            <param name="context">The context for the Finalize command that was received</param>
+            <returns>The command reply that should be sent to the sender of the command</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.Start">
+            <summary>
+            Starts the command handler.  When this method returns, it will be listening for
+            commands and dispatching them to the appropriate handlers.
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.OnStarting">
+            <summary>
+            Override this method to perform activities that should occur before
+            the command handler is started.
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.OnStarted">
+            <summary>
+            Override this method to perform activities just after the command
+            handler has been started (but before the Start method has returned).
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.Stop">
+            <summary>
+            Stop the command handler.  This will cause the command handler to stop
+            listening for commands.  Any commands currently running will be sent
+            an abort message and will complete independent of this method returning.
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.GetRequiredTranslations">
+            <summary>
+            Override this method to notify the associated IModule
+            of translations that this command handler requires.
+            Addresses in Translations will be modified if
+            the module's %Messaging branch contains an override
+            for the translation (based on the address' alias).
+            </summary>
+            <returns>A collection of Translations that the associated IModule will translate based on the module's %Messaging branch</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.AcknowledgeAbort">
+            <summary>
+            This method will send a reply to the sender of the most recently received Abort command to let
+            it know that the command was aborted.  If the command was successfully aborted (success = true),
+            it will also throw an exception that can be bubbled up and used for the reply to the command 
+            that was aborted.
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.Wait(System.TimeSpan,System.Threading.WaitHandle[])">
+            <summary>
+            Wait until the specified time period has expired, the command was aborted
+            (via an Abort message), or one of the optional WaitHandles is fired.  When
+            an Abort message is received, this method will throw a CommandAbortedException.
+            </summary>
+            <param name="timeout">The amount of time to wait</param>
+            <param name="additionalHandles">Optional array of WaitHandles that should be watched.  If any one of them fires before the given time period or an Abort is received, the method returns.</param>
+            <returns>The WaitHandle that fired, causing the wait to end or null if the timeout was reached before a WaitHandle fired</returns>
+            <exception cref="T:BeckmanCoulter.Silas.Module.CommandAbortedException">If the command handler receives an Abort message while this method is waiting, it will throw a CommandAbortedException</exception>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.HandlesSimultaneousCommands">
+            <summary>
+            When true, this property indicates that the module can run 2 or more
+            commands simultaneously.  In this case, the CommandHandler will not
+            return an error when the module receives a command while busy processing
+            another one.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.Module">
+            <summary>
+            The ISilasModule to which this command handler is associated.  This will
+            not be set until after the command handler has been started.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.Portal">
+            <summary>
+            The ISilasPortal to which this command handler is associated.  This will
+            not be available until after the command handler has been started.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.Configuration">
+            <summary>
+            The configuration for the module to which this command handler is
+            associated.  This will not be available until after the command
+            handler has been started.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.Status">
+            <summary>
+            The current status of the module to which this command handler is
+            associated.  This will not be available until after the command
+            handler has been started.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.ReceivedCommands">
+            <summary>
+            An observable stream of command messages sent to the module this
+            command handler is associated with.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.Aborts">
+            <summary>
+            An observable stream of abort messages sent to the module this
+            command handler is associated with.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.Pauses">
+            <summary>
+            An observable stream of pause messages sent to the module this
+            command handler is associated with.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.Resumes">
+            <summary>
+            An observable stream of resume messages sent to the module this
+            command handler is associated with.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.AbortHandle">
+            <summary>
+            An event that is fired whenever an abort message is received
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.PauseHandle">
+            <summary>
+            An event that is fired whenever a pause message is received
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.ResumeHandle">
+            <summary>
+            An event that is fired whenever a resume message is received
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.IsRunning">
+            <summary>
+            The status of the command handler.  True if the command
+            handler has been started, false otherwise.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.IsAborting">
+            <summary>
+            True if the command handler is in the
+            middle of processing an abort message.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.IsPausing">
+            <summary>
+            True if the command handler is in the
+            middle of processing a pause message.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.IsResuming">
+            <summary>
+            True if the command handler is in the
+            middle of processing a resume message.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.CommandDispatcher">
+            <summary>
+            The ICommandDispatcher that this command handler uses
+            to dispatch incoming commands.
+            </summary>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2.CommandProcessing">
+            <summary>
+            The CommandProcessing enum controls control flow through the different
+            options for handling an incoming command.
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.ObservableExtensions.ContinueWith``2(System.IObservable{``0},System.Func{System.IObservable{``1}})">
+            <summary>
+            Watch for the completion of an observable and then start
+            processing instances that come from the second observable.
+            </summary>
+            <typeparam name="TFirst">The type of instances the first observable processes</typeparam>
+            <typeparam name="TSecond">The type of instances the second observable processes</typeparam>
+            <param name="first">The observable upon which we will wait for a completion before processing the second observable</param>
+            <param name="second">A function that will return the observable to start watching once the first observable has completed.  This function is not called if the first observable does not complete or has an error.</param>
+            <returns>An IObservable that will contain any elements from the second observable once the first one has completed.</returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.ObservableExtensions.ContinueWith``2(System.IObservable{``0},System.IObservable{``1})">
+            <summary>
+            Watch for the completion of an observable and then start
+            processing instances that come from the second observable.
+            </summary>
+            <typeparam name="TFirst">The type of instances the first observable processes</typeparam>
+            <typeparam name="TSecond">The type of instances the second observable processes</typeparam>
+            <param name="first">The observable upon which we will wait for a completion before processing the second observable</param>
+            <param name="second">The observable to start watching once the first observable has completed.</param>
+            <returns>An IObservable that will contain any elements from the second observable once the first one has completed.</returns>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.ProxyModule">
+            <summary>
+            The ProxyModule class can be used to interact with other modules.  It provides
+            a way to monitor the module's status and messages sent to and from the module.
+            In addition, it provides some convenience methods for sending messages to the
+            module and getting any reply.
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.ProxyModule.SetUpObservables">
+            <summary>
+            Perform all the steps necessary to get the ProxyModule's IObservables ready to
+            start processing.  This method is only called from the constructor.
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.ProxyModule.EnableLifetimeManagement">
+            <summary>
+            Start monitoring the target module's status.  This starts a cycle
+            of sending Existence Query messages to the module and listening for
+            replies.
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.ProxyModule.DisableLifetimeManagement">
+            <summary>
+            Stop monitoring the target module's status.  This stops the
+            EQ/EQR cycle started by the EnableLifetimeManagement method.
+            </summary>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Resources.LicenseAgreement">
+            <summary>
+              Looks up a localized string similar to Warning: This computer program is protected by international copyright laws, and unauthorized copying, use, distribution, transfer, or sale is a violation of those laws that may result in civil or criminal penalties.  This computer program may also be subject to additional restrictions contained in a license granted by Beckman Coulter, Inc. to the authorized user of this computer program or to the authorized owner or other authorized user of the system onto which this computer program is installed.  Any vio [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.LineAddedHandler">
+            <summary> Handler for when lines are added to a rolling log. </summary>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.RollingLog">
+            <summary> Holds onto a limited amount of log text and rolls out old lines as new ones come in.  You can override the
+            maximum size (<see cref="P:BeckmanCoulter.Silas.RollingLog.MaxSizeInBytes"/>), write lines and get the 
+            current
+            contents (<see cref="P:BeckmanCoulter.Silas.RollingLog.CurrentContents"/>).
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.RollingLog.#ctor">
+            <summary> Constructor. </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.RollingLog.WriteLine(System.String)">
+            <summary> Call this to add a line to the rolling log;  the line will be prefixed with a timestamp before being added. </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.RollingLog.WriteLine(System.String,System.Object[])">
+            <summary> Call this to add a formatted line to the rolling log;  the line will be prefixed with a timestamp before being added.  The
+            formatString is passed to string.Format along with the formatItems before being added.  </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.RollingLog.WriteToFile(System.String)">
+            <summary> Writes the contents of the log to the given file. </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.RollingLog.MaxSizeInBytes">
+            <summary> Approximate maximum size of the log;  increase this to allow a larger amount of text to build up in the log. </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.RollingLog.WriteLinesAsDebugStrings">
+            <summary> When true, added lines are echoed via the OutputDebugString API. </summary>
+        </member>
+        <member name="E:BeckmanCoulter.Silas.RollingLog.LineAdded">
+            <summary> This event is fired when a line is added to the log. </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.RollingLog.CurrentContents">
+            <summary> The entire contents of the log. </summary>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.IncidentReporter">
+            <summary> A rolling log that allows you to report incidents.  An incident will include the text of the incident (e.g., exception
+            text and a stack trace) plus the current content of the rolling log.  After it writes the incident it will trim the number of incident 
+            files to the given maximum, deleting old ones as necessary to limit the maximum disk space taken up by incident logs. </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.IncidentReporter.#ctor(System.String)">
+            <summary> Constructor;  provide the module the log is for (used to choose a directory for incident reports). </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.IncidentReporter.WriteIncident(System.String)">
+            <summary> Adds the given info to the rolling log and then writes out an incident report. </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.IncidentReporter.WriteExceptionIncident(System.Exception)">
+            <summary> Writes out an incident file after adding a description of the given exception. </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.IncidentReporter.MaxIncidentReports">
+            <summary> Maximum number of incident report files to leave in the report directory.  Extras will be deleted as new ones are added. </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.IncidentReporter.IncidentPath">
+            <summary> Location where incidents will go: [Common Application Data folder]\Beckman Coulter\SILAS\[module name]
+            The common app data folder is usually at c:\documents and settings\all users\application data
+            </summary>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogButtons">
+            <summary>
+            Available Button options for use with an IMessageBoxService instance.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogButtons.Ok">
+            <summary>
+            Ok button caption.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogButtons.OkCancel">
+            <summary>
+            Ok and Cancel button captions.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogButtons.YesNo">
+            <summary>
+            Yes and No button captions.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogButtons.YesNoCancel">
+            <summary>
+            Yes, No, and Cancel button captions.
+            </summary>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogIcons">
+            <summary>
+            Available Icon options for use with an IMessageBoxService instance.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogIcons.None">
+            <summary>
+            No icon.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogIcons.Information">
+            <summary>
+            Information icon.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogIcons.Question">
+            <summary>
+            Question icon.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogIcons.Exclamation">
+            <summary>
+            Exclamation icon.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogIcons.Stop">
+            <summary>
+            Stop icon.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogIcons.Warning">
+            <summary>
+            Warning icon.
+            </summary>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogResults">
+            <summary>
+            Available DialogResults options for use with an IMessageBoxService instance.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogResults.None">
+            <summary>
+            None.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogResults.Ok">
+            <summary>
+            Ok.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogResults.Cancel">
+            <summary>
+            Cancel.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogResults.Yes">
+            <summary>
+            Yes.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Services.MessageBox.CustomDialogResults.No">
+            <summary>
+            No.
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.SilasModule`2.Stop(System.String)">
+            <summary>
+            Stop the current module.  This will dispose of any resources the
+            module is using and send an "Unload Reply" message to the source 
+            of the stop request (if provided).
+            </summary>
+            <param name="source">If an "Unload" message was received, this should be the source of the unload message so that an "Unload Reply" can be sent back to them.</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.SilasModule`2.TranslateAddresses(System.Collections.Generic.IEnumerable{BeckmanCoulter.Silas.Messages.IMessageAddress})">
+            <summary>
+            Use the requested addresses to update all required addresses 
+            with matching aliases.  This essentially "translates" the required
+            addresses into the addresses collected from the Keeper.
+            </summary>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.WpfModuleHost">
+            <summary>
+            The WpfModuleHost class is designed to host a single SILAS
+            module within a standalone WPF application.  The SILAS module's name
+            will be taken from the command line (first argument to the app).
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.WpfModuleHost.CloseAppOnUnload">
+            <summary>
+            When true, the WpfModuleHost will cause the WPF application to close
+            as soon as the module it is hosting has been unloaded.  The default
+            value is true.
+            </summary>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.Utility.IFolderBrowserService">
+            <summary>
+            Defines an interface for a folder-browser dialog.
+            </summary>
+            <author>Jeffrey Sadeli</author>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Utility.IFolderBrowserService.ShowDialog(System.Windows.Window)">
+            <summary>
+            This method shows a dialog that allows a folder to be selected.
+            Returns <c>True</c> if user clicks on the 'OK' button; otherwise <c>False</c> .
+            </summary>
+            <param name="owner">The owner window of the dialog</param>
+            <returns>If the user clicks the OK button of the dialog that is displayed, <c>True</c> is returned; otherwise, <c>False</c>.</returns>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Utility.IFolderBrowserService.Title">
+            <summary>
+            Gets or sets the string that is displayed above the tree view control in the dialog box.
+            </summary>
+            <remarks>
+            Value must be set before calling ShowDialog().
+            </remarks>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Utility.IFolderBrowserService.InitialFolder">
+            <summary>
+            Gets or sets the initially selected folder path.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Utility.IFolderBrowserService.InitialExpandedFolder">
+            <summary>
+            Gets or sets the initially selected and expanded folder path.
+            Overrides SelectedFolder.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Utility.IFolderBrowserService.SelectedFolder">
+            <summary>
+            Gets the current and or final selected folder path.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:BeckmanCoulter.Silas.Module.Utility.VistaNativeFolderBrowserDialog" -->
+        <member name="M:BeckmanCoulter.Silas.Module.Utility.VistaNativeFolderBrowserDialog.SHCreateItemFromParsingName(System.String,System.IntPtr,System.Guid,BeckmanCoulter.Silas.Module.Utility.IShellItem@)">
+            <summary>
+            Converts a file system path into an IShellItem or IShellItem2 COM object that can be used
+            in system dialogs.
+            </summary>
+            <param name="pszPath">The file system path that will be converted.</param>
+            <param name="pbc"></param>
+            <param name="iIdIShellItem">The COM CLSID for either IShellItem or IShellItem2.</param>
+            <param name="iShellItem">The object that will hold the IShellItem or IShellItem2.</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Utility.VistaNativeFolderBrowserDialog.ShowDialog(System.Windows.Window)">
+            <summary>
+            Display the folder selection dialog.
+            </summary>
+            <param name="owner">The window that will be set as the owner of the folder selection dialog.</param>
+            <returns>
+            True if the user selected a folder, false otherwise.
+            </returns>
+            <remarks>
+            It is possible for a user to select an item on their computer that does not have a path (i.e. the 
+            "Libraries" folder).  In this case, true is returned, but SelectedFolder will be null.
+            </remarks>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Utility.VistaNativeFolderBrowserDialog.Title">
+            <summary>
+            Gets or sets the title bar text of the dialog.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Utility.VistaNativeFolderBrowserDialog.InitialFolder">
+            <summary>
+            Gets or sets the initially selected folder path.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Utility.VistaNativeFolderBrowserDialog.InitialExpandedFolder">
+            <summary>
+            Gets or sets the initially selected and expanded folder path.  Overrides SelectedFolder.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Utility.VistaNativeFolderBrowserDialog.SelectedFolder">
+            <summary>
+            Gets the current and or final selected folder path.
+            </summary>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog">
+            <summary>
+            Represents a common dialog box (Win32::SHBrowseForFolder()) that allows a user to select a folder.
+            </summary>
+            <example>
+            <code>
+            <![CDATA[
+            FolderBrowserWrapperDialog dlg = new FolderBrowserWrapperDialog();
+            dlg.Title = "Select a folder and click OK!";
+            dlg.InitialExpandedFolder = @"c:\";
+            dlg.OKButtonText = "OK!";
+            
+            if (true == dlg.ShowDialog(this))
+            {
+                // Do something with the selected folder...
+                MessageBox.Show(dlg.SelectedFolder, "Selected Folder");
+            }
+            ]]>
+            </code>
+            </example>
+            <remarks>
+            .NET 3.5, Visual Studio 2008 SP1, Windows XP or better...
+            </remarks>
+            <author>Mark Salsbery - Microsoft MVP - Visual C++</author>
+            <seealso href="http://www.codeproject.com/Members/Mark-Salsbery?msg=2804348"/>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.#ctor">
+            <summary>
+            Constructs a BrowseForFolderDialog with default BrowseInfoFlags set to BIF_NEWDIALOGSTYLE.
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.ShowDialog">
+            <summary>
+            Shows the dialog (Win32::SHBrowseForFolder()).
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.ShowDialog(System.Windows.Window)">
+            <summary>
+            Shows the dialog (Win32::SHBrowseForFolder()) with its hwndOwner set to the handle of 'owner'.
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.SendMessageW(System.IntPtr,System.UInt32,System.IntPtr,System.IntPtr)">
+            <summary>
+            Send message handle.
+            </summary>
+            <remarks>
+            x64 user32.dll is located at '%windir%\System32\user32.dll'
+            x32 compatible is located at '%windir%\SysWOW64\user32.dll'
+            </remarks>
+            <param name="hWnd">The window handle.</param>
+            <param name="Msg">The MSG.</param>
+            <param name="wParam">The w param.</param>
+            <param name="lParam">The l param.</param>
+            <returns></returns>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.SendMessageW(System.IntPtr,BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.MessageToBrowser,System.IntPtr,System.String)">
+            <summary>
+            Send message handle.
+            </summary>
+            <param name="hWnd">The window handle.</param>
+            <param name="msg">The MSG.</param>
+            <param name="wParam">The w param.</param>
+            <param name="str">The STR.</param>
+            <returns></returns>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.SelectedFolder">
+            <summary>
+            Gets the current and or final selected folder path.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.Title">
+            <summary>
+            Gets or sets the string that is displayed above the tree view control in the dialog box (must set BEFORE calling ShowDialog()). 
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.InitialFolder">
+            <summary>
+            Gets or sets the initially selected folder path.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.InitialExpandedFolder">
+            <summary>
+            Gets or sets the initially selected and expanded folder path.  Overrides SelectedFolder.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.OKButtonText">
+            <summary>
+            Gets or sets the text for the dialog's OK button.
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BrowseInfo">
+            <summary>
+            Provides direct access to the Win32::SHBrowseForFolder() BROWSEINFO structure used to create the dialog in ShowDialog().
+            </summary>
+        </member>
+        <member name="P:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BrowserDialogFlags">
+            <summary>
+            Provides direct access to the ulFlags field of the Win32::SHBrowseForFolder() structure used to create the dialog in ShowDialog().
+            </summary>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BrowseCallbackProc">
+            <summary>
+            Browse callback.
+            </summary>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BrowseInfoFlags">
+            <summary>
+            Browse info flags.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BrowseInfoFlags.BIF_None">
+            <summary>
+            No specified BIF_xxx flags.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BrowseInfoFlags.BIF_RETURNONLYFSDIRS">
+            <summary>
+            Only return file system directories. If the user selects folders that are not part of the file system, the OK button is grayed.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BrowseInfoFlags.BIF_DONTGOBELOWDOMAIN">
+            <summary>
+            Do not include network folders below the domain level in the dialog box's tree view control.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BrowseInfoFlags.BIF_STATUSTEXT">
+            <summary>
+            Include a status area in the dialog box. 
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BrowseInfoFlags.BIF_RETURNFSANCESTORS">
+            <summary>
+            Only return file system ancestors. An ancestor is a subfolder that is beneath the root folder in the namespace hierarchy.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BrowseInfoFlags.BIF_EDITBOX">
+            <summary>
+            Include an edit control in the browse dialog box that allows the user to type the name of an item.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BrowseInfoFlags.BIF_VALIDATE">
+            <summary>
+            If the user types an invalid name into the edit box, the browse dialog box will call the application's BrowseCallbackProc with the BFFM_VALIDATEFAILED message. 
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BrowseInfoFlags.BIF_NEWDIALOGSTYLE">
+            <summary>
+            Use the new user interface. Setting this flag provides the user with a larger dialog box that can be resized.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BrowseInfoFlags.BIF_USENEWUI">
+            <summary>
+            Use the new user interface, including an edit box. This flag is equivalent to BIF_EDITBOX | BIF_NEWDIALOGSTYLE. 
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BrowseInfoFlags.BIF_BROWSEINCLUDEURLS">
+            <summary>
+            The browse dialog box can display URLs. The BIF_USENEWUI and BIF_BROWSEINCLUDEFILES flags must also be set. 
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BrowseInfoFlags.BIF_UAHINT">
+            <summary>
+            When combined with BIF_NEWDIALOGSTYLE, adds a usage hint to the dialog box in place of the edit box.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BrowseInfoFlags.BIF_NONEWFOLDERBUTTON">
+            <summary>
+            Do not include the New Folder button in the browse dialog box.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BrowseInfoFlags.BIF_NOTRANSLATETARGETS">
+            <summary>
+            When the selected item is a shortcut, return the PIDL of the shortcut itself rather than its target.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BrowseInfoFlags.BIF_BROWSEFORCOMPUTER">
+            <summary>
+            Only return computers. If the user selects anything other than a computer, the OK button is grayed.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BrowseInfoFlags.BIF_BROWSEFORPRINTER">
+            <summary>
+            Only allow the selection of printers. If the user selects anything other than a printer, the OK button is grayed. 
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BrowseInfoFlags.BIF_BROWSEINCLUDEFILES">
+            <summary>
+            The browse dialog box will display files as well as folders.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BrowseInfoFlags.BIF_SHAREABLE">
+            <summary>
+            The browse dialog box can display shareable resources on remote systems. 
+            </summary>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BROWSEINFOW">
+            <summary>
+            Browse info
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BROWSEINFOW.hwndOwner">
+            <summary>
+            A handle to the owner window for the dialog box.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BROWSEINFOW.pidlRoot">
+            <summary>
+            A pointer to an item identifier list (PIDL) specifying the location of the root folder from which to start browsing. 
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BROWSEINFOW.pszDisplayName">
+            <summary>
+            The address of a buffer to receive the display name of the folder selected by the user. The size of this buffer is assumed to be MAX_PATH characters.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BROWSEINFOW.lpszTitle">
+            <summary>
+            The address of a null-terminated string that is displayed above the tree view control in the dialog box. 
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BROWSEINFOW.ulFlags">
+            <summary>
+            Flags specifying the options for the dialog box. 
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BROWSEINFOW.lpfn">
+            <summary>
+            A BrowseCallbackProc delegate that the dialog box calls when an event occurs.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BROWSEINFOW.lParam">
+            <summary>
+            An application-defined value that the dialog box passes to the BrowseCallbackProc delegate, if one is specified.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.BROWSEINFOW.iImage">
+            <summary>
+            A variable to receive the image associated with the selected folder. The image is specified as an index to the system image list.
+            </summary>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.MessageFromBrowser">
+            <summary>
+            Message from browser.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.MessageFromBrowser.BFFM_INITIALIZED">
+            <summary>
+            The dialog box has finished initializing.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.MessageFromBrowser.BFFM_SELCHANGED">
+            <summary>
+            The selection has changed in the dialog box.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.MessageFromBrowser.BFFM_VALIDATEFAILEDA">
+            <summary>
+            (ANSI) The user typed an invalid name into the dialog's edit box. A nonexistent folder is considered an invalid name.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.MessageFromBrowser.BFFM_VALIDATEFAILEDW">
+            <summary>
+            (Unicode) The user typed an invalid name into the dialog's edit box. A nonexistent folder is considered an invalid name.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.MessageFromBrowser.BFFM_IUNKNOWN">
+            <summary>
+            An IUnknown interface is available to the dialog box.
+            </summary>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.MessageToBrowser">
+            <summary>
+            Messages to browser.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.MessageToBrowser.WM_USER">
+            <summary>
+            Win32 API macro - start of user defined window message range.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.MessageToBrowser.BFFM_SETSTATUSTEXTA">
+            <summary>
+            (ANSI) Sets the status text. Set lpData to point to a null-terminated string with the desired text. 
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.MessageToBrowser.BFFM_ENABLEOK">
+            <summary>
+            Enables or disables the dialog box's OK button.  lParam - To enable, set to a nonzero value. To disable, set to zero.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.MessageToBrowser.BFFM_SETSELECTIONA">
+            <summary>
+            (ANSI) Specifies the path of a folder to select. 
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.MessageToBrowser.BFFM_SETSELECTIONW">
+            <summary>
+            (Unicode) Specifies the path of a folder to select. 
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.MessageToBrowser.BFFM_SETSTATUSTEXTW">
+            <summary>
+            (Unicode) Sets the status text. Set lpData to point to a null-terminated string with the desired text. 
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.MessageToBrowser.BFFM_SETOKTEXT">
+            <summary>
+            Sets the text that is displayed on the dialog box's OK button.
+            </summary>
+        </member>
+        <member name="F:BeckmanCoulter.Silas.Module.Utility.Win32NativeFolderBrowserDialog.MessageToBrowser.BFFM_SETEXPANDED">
+            <summary>
+            Specifies the path of a folder to expand in the Browse dialog box. 
+            </summary>
+        </member>
+    </members>
+</doc>

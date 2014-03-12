@@ -1,0 +1,305 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BeckmanCoulter.Silas.Module.Autofac</name>
+    </assembly>
+    <members>
+        <member name="T:BeckmanCoulter.Silas.Module.Autofac.AutofacWpfModuleRunner`1">
+            <summary>
+            The AutofacWpfModuleRunner class can be used to set up standard elements
+            of a WPF based SILAS module and then start the module.
+            </summary>
+            <typeparam name="TAutofacModule">The type of the WpfSilasModuleRegistrations class that should be used when constructing the Autofac container</typeparam>
+            <typeparam name="TConfig">The type of the configuration message that will be used by the registered WpfSilasModule</typeparam>
+            <typeparam name="TStatus">The type of the status message that will be used by the registered WpfSilasModule</typeparam>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.AutofacWpfModuleRunner`1.Start">
+            <summary>
+            Register types in the TAutofacModule and start the IModuleHost
+            that is registered as a result.
+            </summary>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfConsumerModuleRegistrations`2.OnRegisterConsumerMvvm(Autofac.ContainerBuilder)">
+            <summary>
+            Register types related to the framework's run config dialog.  This includes
+            the WPF window for the run config and the view model (IRunConfigDialog)
+            associated with this window.
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfConsumerModuleRegistrations`2.OnRegisterConsumerHandler(Autofac.ContainerBuilder)">
+            <summary>
+            Register the type that Autofac will use to provide an object to
+            handle consumer related messages (Start Run, End Run, and 
+            Run Config Dialog).  This type should register itself as an
+            IMessageHandler.  In addition, the type should also register
+            itself as only having a single instance.
+            </summary>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfConsumerModuleRegistrations`2.OnRegisterModuleInfoProvider(Autofac.ContainerBuilder)">
+            <summary>
+            Register the type that will be used by Autofac to provide IModuleInfoProviders
+            to the framework and modules using the framework.  This type should be
+            registered as only a single instance.
+            </summary>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfConsumerModuleRegistrations`2.OnRegisterAboutBoxMvvm(Autofac.ContainerBuilder)">
+            <summary>
+            Register types related to the framework's "about box".  This includes
+            the WPF window for the about box and the view model (IAboutBoxDialog)
+            associated with this window.
+            </summary>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfConsumerModuleRegistrations`2.OnRegisterModuleMessageHandler(Autofac.ContainerBuilder)">
+            <summary>
+            Register the type that Autofac will use to provide an object to
+            handle basic module messages (Existence Query, Unload Module).
+            This type should register itself as an IMessageHandler.  In
+            addition, the type should also register itself as only having
+            a single instance.
+            </summary>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfConsumerModuleRegistrations`2.OnRegisterModule(Autofac.ContainerBuilder)">
+            <summary>
+            Register the type that Autofac will use to provide an ISilasModule&lt;TConfig, TStatus&gt;
+            instance to the rest of the framework.  This type should register itself
+            as the generic type as well as the non-generic interface (ISilasModule).  In
+            addition, the type should also register itself as only having a single instance.
+            </summary>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfConsumerModuleRegistrations`2.OnRegisterModuleHost(Autofac.ContainerBuilder)">
+            <summary>
+            Register the type that Autofac will use to provide an instance of
+            IModuleHost to the rest of the framework.  This type should also
+            register itself as only having a single instance.
+            </summary>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfConsumerModuleRegistrations`2.OnRegisterProxyModule(Autofac.ContainerBuilder)">
+            <summary>
+            Register the type that will be used to provide IProxyModule
+            instances to the framework and modules using the framework.
+            </summary>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfConsumerModuleRegistrations`2.OnRegisterMessageBoxService(Autofac.ContainerBuilder)">
+            <summary>
+            Register the service that will be used to display message boxes by
+            the framework.
+            </summary>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfSilasModuleRegistrations`2.OnRegisterConfigurationMvvm(Autofac.ContainerBuilder)">
+            <summary>
+            Register classes that will be necessary to display your custom configuration.
+            This normally includes the ViewModel for the configuration (something deriving
+            from <see cref="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.ConfigurationViewModel`3"/> or at least 
+            implementing <see cref="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.IConfigurationViewModel`2"/>) and a 
+            view for that ViewModel (a Control or UserControl).
+            </summary>
+            <param name="builder">The Autofac ContainerBuilder that should be used to perform the registrations.</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfSilasModuleRegistrations`2.OnRegisterActionConfigMvvm(Autofac.ContainerBuilder)">
+            <summary>
+            Register classes that will be necessary to display your custom action config.
+            This normally includes all the ViewModel classes for your actions (deriving
+            from <see cref="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.ViewModels.ActionViewModel`3"/> or at least
+            implementing <see cref="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.IActionViewModel`2"/>) and a view
+            for each (Controls or UserControls).
+            </summary>
+            <param name="builder">The Autofac ContainerBuilder that should be used to perform the registrations.</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfSilasModuleRegistrations`2.OnRegisterCommandHandler(Autofac.ContainerBuilder)">
+            <summary>
+            Register classes necessary for your custom command handling.  This
+            includes the command handler itself (something deriving from
+            <see cref="T:BeckmanCoulter.Silas.Module.MessageHandlers.CommandHandler`2"/> or at
+            least implementing <see cref="T:BeckmanCoulter.Silas.Module.MessageHandlers.ICommandHandler"/>) and any dependencies
+            it might have.
+            </summary>
+            <param name="builder">The Autofac ContainerBuilder that should be used to perform the registrations.</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfSilasModuleRegistrations`2.OnRegisterModuleInfoProvider(Autofac.ContainerBuilder)">
+            <summary>
+            Register the type that will be used by Autofac to provide IModuleInfoProviders
+            to the framework and modules using the framework.  This type should be
+            registered as only a single instance.
+            </summary>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfSilasModuleRegistrations`2.OnRegisterAboutBoxMvvm(Autofac.ContainerBuilder)">
+            <summary>
+            Register types related to the framework's "about box".  This includes
+            the WPF window for the about box and the view model (IAboutBoxDialog)
+            associated with this window.
+            </summary>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfSilasModuleRegistrations`2.OnRegisterOptionsFormMvvm(Autofac.ContainerBuilder)">
+            <summary>
+            Register types related to the framework's options form.  This includes
+            the WPF window for the options form and the view model (IOptionsDialog)
+            associated with this window.
+            </summary>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfSilasModuleRegistrations`2.OnRegisterOptionsFormHandler(Autofac.ContainerBuilder)">
+            <summary>
+            Register the type that Autofac will use to provide IOptionsFormHandlers
+            to the framework.  This type should register itself as an IMessageHandler
+            and register itself as only having a single instance.
+            </summary>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfSilasModuleRegistrations`2.OnRegisterActionConfigDialogMvvm(Autofac.ContainerBuilder)">
+            <summary>
+            Register types related to the framework's action config.  This includes
+            the WPF window for the action config and the view model (IActionConfigDialog)
+            associated with this window.
+            </summary>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfSilasModuleRegistrations`2.OnRegisterActionConfigHandler(Autofac.ContainerBuilder)">
+            <summary>
+            Register the type that Autofac will use to provide IActionConfigHandlers
+            to the framework.  This type should also register itself as an IMessageHandler.
+            In addition, this type should register itself as only having one instance.
+            </summary>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfSilasModuleRegistrations`2.OnRegisterCommandDispatcher(Autofac.ContainerBuilder)">
+            <summary>
+            Register the type that Autofac will use to provide ICommandDispatchers
+            to the framework.  This type should register itself as only having a
+            single instance.
+            </summary>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfSilasModuleRegistrations`2.OnRegisterModuleMessageHandler(Autofac.ContainerBuilder)">
+            <summary>
+            Register the type that Autofac will use to provide an object to
+            handle basic module messages (Existence Query, Unload Module).
+            This type should register itself as an IMessageHandler.  In
+            addition, the type should also register itself as only having
+            a single instance.
+            </summary>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfSilasModuleRegistrations`2.OnRegisterModule(Autofac.ContainerBuilder)">
+            <summary>
+            Register the type that Autofac will use to provide an ISilasModule&lt;TConfig, TStatus&gt;
+            instance to the rest of the framework.  This type should register itself
+            as the generic type as well as the non-generic interface (ISilasModule).  In
+            addition, the type should also register itself as only having a single instance.
+            </summary>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfSilasModuleRegistrations`2.OnRegisterModuleHost(Autofac.ContainerBuilder)">
+            <summary>
+            Register the type that Autofac will use to provide an instance of
+            IModuleHost to the rest of the framework.  This type should also
+            register itself as only having a single instance.
+            </summary>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfSilasModuleRegistrations`2.OnRegisterProxyModule(Autofac.ContainerBuilder)">
+            <summary>
+            Register the type that will be used to provide IProxyModule
+            instances to the framework and modules using the framework.
+            </summary>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfSilasModuleRegistrations`2.RegisterDefaultInitializeAction(System.TimeSpan,Autofac.ContainerBuilder)">
+            <summary>
+            Only call this method if you would like the default Initialize action
+            to be available from your module.  This includes registering
+            <see cref="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.ViewModels.InitializeActionViewModel`2"/>.
+            </summary>
+            <param name="defaultTimeEstimate">The time estimate that will be used for this action when it is initially chosen.</param>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfSilasModuleRegistrations`2.RegisterDefaultOpenAction(System.TimeSpan,Autofac.ContainerBuilder)">
+            <summary>
+            Only call this method if you would like the default Open action
+            to be available from your module.  This includes registering
+            <see cref="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.ViewModels.OpenActionViewModel`2"/>.
+            </summary>
+            <param name="defaultTimeEstimate">The time estimate that will be used for this action when it is initially chosen.</param>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfSilasModuleRegistrations`2.RegisterDefaultOpenAction(System.Func{`0,System.TimeSpan},Autofac.ContainerBuilder,System.Action{BeckmanCoulter.Silas.Module.Dialogs.WPF.ViewModels.BlankActionViewModel{`0,`1,BeckmanCoulter.Silas.Messages.CommandMessage},BeckmanCoulter.Silas.IMessageContext{BeckmanCoulter.Silas.Messages.ICommandReplyMessage}})">
+            <summary>
+            Only call this method if you would like the default Open action
+            to be available from your module.  This includes registering
+            <see cref="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.ViewModels.OpenActionViewModel`2"/>.
+            </summary>
+            <param name="getTimeEstimate">The function to use to get the time estimate that will be used for this action when it is initially chosen.</param>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+            <param name="onActionComplete">The action to perform when this action completes.</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfSilasModuleRegistrations`2.RegisterDefaultCloseAction(System.TimeSpan,Autofac.ContainerBuilder)">
+            <summary>
+            Only call this method if you would like the default Close action
+            to be available from your module.  This includes registering
+            <see cref="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.ViewModels.CloseActionViewModel`2"/>.
+            </summary>
+            <param name="defaultTimeEstimate">The time estimate that will be used for this action when it is initially chosen.</param>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfSilasModuleRegistrations`2.RegisterDefaultCloseAction(System.Func{`0,System.TimeSpan},Autofac.ContainerBuilder,System.Action{BeckmanCoulter.Silas.Module.Dialogs.WPF.ViewModels.BlankActionViewModel{`0,`1,BeckmanCoulter.Silas.Messages.CommandMessage},BeckmanCoulter.Silas.IMessageContext{BeckmanCoulter.Silas.Messages.ICommandReplyMessage}})">
+            <summary>
+            Only call this method if you would like the default Close action
+            to be available from your module.  This includes registering
+            <see cref="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.ViewModels.CloseActionViewModel`2"/>.
+            </summary>
+            <param name="getTimeEstimate">The function to use to get the time estimate that will be used for this action when it is initially chosen.</param>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+            <param name="onActionComplete">The action to perform when this action completes.</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfSilasModuleRegistrations`2.RegisterBlankAction(Autofac.ContainerBuilder,System.String,System.String,System.Int32,System.TimeSpan)">
+            <summary>
+            Call this method if you would like add an action with no options (no View/ViewModel) for your module.
+            This includes registering
+            <see cref="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.ViewModels.BlankActionViewModel`3"/>.
+            </summary>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+            <param name="name">The name of the action</param>
+            <param name="description">The description of the action</param>
+            <param name="order">The UI order of the action</param>
+            <param name="defaultTimeEstimate">The time estimate that will be used for this action when it is initially chosen.</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfSilasModuleRegistrations`2.RegisterBlankAction(Autofac.ContainerBuilder,System.String,System.String,System.Int32,System.Func{`0,System.TimeSpan},System.Action{BeckmanCoulter.Silas.Module.Dialogs.WPF.ViewModels.BlankActionViewModel{`0,`1,BeckmanCoulter.Silas.Messages.CommandMessage},BeckmanCoulter.Silas.IMessageContext{BeckmanCoulter.Silas.Messages.ICommandReplyMessage}})">
+            <summary>
+            Call this method if you would like add an action with no options (no View/ViewModel) for your module.
+            This includes registering
+            <see cref="T:BeckmanCoulter.Silas.Module.Dialogs.WPF.ViewModels.BlankActionViewModel`3"/>.
+            </summary>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+            <param name="name">The name of the action</param>
+            <param name="description">The description of the action</param>
+            <param name="order">The UI order of the action</param>
+            <param name="getTimeEstimate">The function to use to get the time estimate that will be used for this action when it is initially chosen.</param>
+            <param name="onActionComplete">The action to perform when this action completes.</param>
+        </member>
+        <member name="M:BeckmanCoulter.Silas.Module.Autofac.Configuration.WpfSilasModuleRegistrations`2.OnRegisterMessageBoxService(Autofac.ContainerBuilder)">
+            <summary>
+            Register the service that will be used to display message boxes by
+            the framework.
+            </summary>
+            <param name="builder">The Autofac ContainerBuilder that should be used for registering</param>
+        </member>
+        <member name="T:BeckmanCoulter.Silas.Module.Autofac.Features.OwnedWrapper`1">
+            <summary>
+            A wrapper class for Autofac's Owned&lt;T&gt; class.  Having
+            this class allows the framework to be IoC agnostic, leaving
+            room for other implementations (such as a pure MEF one).
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+    </members>
+</doc>
